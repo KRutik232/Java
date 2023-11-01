@@ -1,64 +1,61 @@
 package com.demo.beans;
 
-public class Person {
-	//data members
+public class Person implements Comparable<Person>{
 	private int pid;
 	private String pname;
 	private String mobile;
-	
-	//default constructor
-	//one parameter implicitly and it is this
+	private String email;
 	public Person() {
-		pid=0;
-		pname=null;
-		mobile=null;
-	}
-	//parametrized constructor
-	//one parameter implicitly and it is this, 
-	//and plus 3 more parameters will be there
-	public Person(int pid,String pname,String mob) {
-		this.pid=pid;
-		this.pname=pname;
-		this.mobile=mob;
+		//System.out.println("in person default constructor");
 		
 	}
-		
-	@Override
-	public boolean equals(Object obj) {
-		System.out.println("in person equals method--->"+this.pid+"-----"+((Person)obj).pid);
-		return this.pid==((Person)obj).pid; //&& this.pname.equals(((Person)obj).pname);
-		
-		
+	public Person(int id) {
+		this.pid=id;
 		
 	}
-	///setter function
-	public void setPid(int pid) {
-		this.pid=pid;
+	public boolean equals(Object ob) {
+		return this.pid==((Person)ob).pid;
 	}
-	public void setPname(String nm) {
-		this.pname=nm;
-	}
-	public void setMobile(String m) {
-		this.mobile=m;
+	public Person(int pid, String pname, String mobile, String email) {
+		//System.out.println("in person paremterised  constructor");
+		this.pid = pid;
+		this.pname = pname;
+		this.mobile = mobile;
+		this.email = email;
 	}
 	public int getPid() {
-		return this.pid;
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
 	}
 	public String getPname() {
 		return pname;
 	}
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
 	public String getMobile() {
 		return mobile;
 	}
-	/*
-	 * //member method public void displayPerson(){
-	 * System.out.println("pid: "+this.pid);
-	 * System.out.println("name: "+this.pname);
-	 * System.out.println("mobile: "+mobile); }
-	 */
-	
-	public String toString() {
-		return "pid: "+this.pid+"\nName: "+this.pname+"\nMobile: "+this.mobile;
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	@Override
+	public String toString() {
+		return "Person [pid=" + pid + ", pname=" + pname + ", mobile=" + mobile + ", email=" + email + "]";
+	}
+	@Override
+	public int compareTo(Person o) {
+		System.out.println("In Person compareTo Method "+this.pname+"----"+o.pname);
+		return this.pname.compareTo(o.pname);
+	}
+	
 
 }
